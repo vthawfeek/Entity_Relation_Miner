@@ -1,0 +1,143 @@
+LIFE SCIENCE RESOURCE DEVELOPER TASK & PRESENTATION
+
+** CONFIDENTIAL - DO NOT PASS TO THIRD PARTIES, INCLUDING AGENCIES **
+
+Please complete the tasks described below and prepare a presentation of your results, including some discussion of methods used and evidence. Your presentation should last 10-15 mins. If possible, please email your presentation in advance of the interview, and bring a copy with you on USB key or CD if you wish. A laptop will be available for the interview. Please let me know if you have any questions.
+
+TASK 1. PROTEIN THESAURUS
+-------------------------
+
+You are given the following 16 proteins (using the corresponding Entrez Gene official symbols):
+
+ABCC8
+CACNA1A
+FRAP1
+INS
+INSR
+IRS1
+KCNJ11
+KRAS
+MAP2K1
+PIK3CA
+PPARG
+PTPN1
+RAF1
+RPS6KB1
+SLC2A2
+SOS1
+
+Please divide the proteins into specific families (e.g. kinases, GPCRs and phosphatases) and arrange them in a taxonomy/thesaurus that includes some example synonyms for each of the proteins. Your thesaurus should be in the format described below.
+
+You can use publicly available resources such as Entrez, and any other mechanisms you can think of, to find suitable synonyms. How would you scale this process up if the list had contained 1,000 proteins?
+
+Please also suggest a disease area to which all the 16 proteins might be related and describe a mechanism linking a protein to the disease. 
+
+
+TASK 2. PROTEIN/GENE INTERACTIONS
+---------------------------------
+
+You are given an "ontology" of relationships in ANSI Thesaurus format (Relational Ontology, below), and a list of entities of interest:
+
+c-fos
+c-jun
+IFN-gamma
+IL-2
+IL-6
+Interferon gamma
+kappa B-3
+ISG
+LTB4
+M-CSF
+Nef
+NF-kappa B
+PKC
+PMA
+
+You are given 200 scientific abstracts. These are provided as XML wrapped plain text, 200abstracts.xml.
+
+Using the ontology as input, please write a program or script, i.e. in Python, to extract relationships (as specified in the ontology) occurring between the entities of interest in the supplied abstracts.
+
+Your program should take as input the ontology and the document, and should output the relationships in tab-separated format, e.g.
+
+RELN	ENTITY1	ENTITY2	SENTENCE
+
+where RELN is the preferred term for the relationship from the ontology. ENTITY1 and ENTITY2 are the entities found. SENTENCE is the sentence from which the relationship was extracted. 
+
+Please do not take too much time refining your method, but make notes of any enhancements you might have considered with more time. 
+
+RELATIONAL ONTOLOGY
+
+GG_gene_gene
+	PT gene-gene relation
+	NT GG_inhibit
+	NT GG_increase
+	NT GG_affect
+
+GG_inhibit
+	PT inhibit
+	SYN inhibits
+	SYN inhibited
+	SYN suppresses
+	SYN suppressed
+	SYN blocks
+	SYN blocked
+	SYN down-regulates
+	SYN down-regulated
+
+GG_increase
+	PT increase
+	SYN increases
+	SYN increased
+	SYN exacerbates
+	SYN exacerbated
+	SYN activates
+	SYN activated
+
+GG_affect
+	PT affect
+	SYN affects
+	SYN affected
+	SYN modulates
+	SYN modulated
+	SYN mediates
+	SYN mediated
+
+
+NOTES
+-----
+
+THESAURUS FORMAT
+
+The format to be used is a derivation of the ISO standard "2788/ANSI
+Z39.19-1993 Guidelines for the Construction, Format, and Management of
+Monolingual Thesauri". The syntax is straightforward and allows the
+definition of node IDs, preferred terms, synonyms and children, as
+follows: 
+
+NodeID1
+    PT Preferred Term
+    SYN Synonym 1
+    SYN Synonym 2
+    SYN Synonym N
+    NT Child1ID
+    NT Child2ID
+    NT ChildMID
+
+NodeID2
+    PT Preferred Term
+    ...
+
+Only the preferred term and node ID are required to define a node; the
+NT (narrower term or child) and SYN nodes are optional. The node ID
+should be unique.
+
+In the ontology you should assume that the PTs are not treated as synonyms. These supply the standardised name for the relationship to be shown in the output.
+
+OTHER RESOURCES
+
+PubMed: http://www.ncbi.nlm.nih.gov/pubmed/
+Entrez gene: http://www.ncbi.nlm.nih.gov/sites/entrez?db=gene
+E-utilities help: http://www.ncbi.nlm.nih.gov/entrez/query/static/eutils_help.html
+Python: http://www.python.org/
+
+
